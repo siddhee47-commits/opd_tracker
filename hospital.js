@@ -1,0 +1,20 @@
+const mongoose = require('mongoose')
+
+const DepartmentSchema = new mongoose.Schema({name:{type: String, required:ture},
+averageServiceMinutes:{type: Number,default: 10}})
+
+const HospitalSchema = new mongoose.Schema({
+    name: {type: String, required: true},
+    address: {type: String, required: true},
+    location: {lat: Number, lng: Number},
+    departments: [DepartmentSchema],
+    adminld: {
+        type: mongoose.Schema.Types.Objectld,
+        red:'User'
+    },
+    qrCode: String,
+    createdAt: { type: Date, default: Date.now}
+
+
+})
+module.exports = mongoose.model('Hospital',HospitalSchema)
